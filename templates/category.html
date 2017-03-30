@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+{% block body %}
+<br><br>
+<div class="datagrid">
+<table>
+  <tr>
+    <td>
+<form action="{{ url_for('createCategory') }}" method=post>
+      <table>
+        <tr>
+          <th>Create Category</th>
+        </tr>
+        <tr>
+          <td>Category:</td>
+          <td><input type="text" name="category"></td>
+        </tr>
+        <tr>
+          <td>Capex:</td>
+          <td><input type="text" name="capexCat"></td>
+        </tr>
+        <tr>
+          <td><input type=submit value="Create Category"></td>
+        </tr>
+      </table>
+</form>
+    </td>
+    <td>
+<form action="{{ url_for('updateCategory') }}" method=post>
+  <table>
+    <tr>
+      <th>Update Category</th>
+    </tr>
+    <tr>
+      <td>Old Category:</td>
+      <td><input type="text" name="oldCategory"></td>
+    </tr>
+    <tr>
+      <td>Category:</td>
+      <td><input type="text" name="newCategory"></td>
+    </tr>
+    <tr>
+      <td>Capex:</td>
+      <td><input type="text" name="newcapexCat"></td>
+    </tr>
+    <tr>
+      <td><input type=submit value="Update Category"></td>
+    </tr>
+  </table>
+</form>
+    </td>
+    <td>
+<form action="{{ url_for('deleteCategory') }}" method=post>
+  <table>
+    <tr>
+      <th>Delete Category</th>
+    </tr>
+    <tr>
+      <td>Category to delete:</td>
+      <td><input type="text" name="deleteCategory"></td>
+    </tr>
+    <tr>
+      <td><input type=submit value="Delete Category"></td>
+    </tr>
+  </table>
+</form>
+    </td>
+</tr>
+</table>
+</div>
+<br><br>
+<div class="datagrid">
+
+<table>
+  <tr>
+    <th>Category</th>
+    <th>Capex</th>
+  </tr>
+  {% for entry in entries %}
+  <tr>
+    <td>{{ entry.category }}</td>
+    <td>{{ entry.capexCat }}</td>
+  </tr>
+  {% endfor %}
+</table>
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block body %}
+<br><br>
+<div class="datagrid">
+<table>
+  <tr>
+    <td>
+<form action="{{ url_for('addDevice') }}" method=post>
+      <table>
+        <tr>
+          <th>Create Device</th>
+        </tr>
+        <tr>
+          <td>Device:</td>
+          <td>
+            <select name=device>
+              {% for dev in devs %}
+                <dd><option value="{{dev.device}}">{{dev.device}}</option>
+              {% endfor %}
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><input type=submit value="Add Device"></td>
+        </tr>
+      </table>
+</form>
+    </td>
+  </tr>
+</table>
+
+{% endblock %}
